@@ -9,18 +9,21 @@
             <th>Phone Number:</th>
             <th>Address:</th>
             <th>Username:</th>
-            <th>Password:</th>
             <th>Email</th>
-            <th>Phone</th>
+            <th>User Type</th>
+            <th>User Image</th>
         </tr>
-        @foreach($admins as $admin)
+        @foreach($users as $user)
             <tr>
-                <td>{{$admin->name}}</td>
-                <td>{{$admin->dob}}</td>
-                <td>{{$admin->email}}</td>
-                <td>{{$admin->phone}}</td>
-                <td><a href="/admin/edit/{{$admin->id}}/{{$admin->name}}">Edit</a></td>
-                <td><a href="/admin/delete/{{$admin->id}}/{{$admin->name}}">Delete</a></td>
+                <td>{{$user->U_name}}</td>
+                <td>{{$user->U_phone}}</td>
+                <td>{{$user->U_address}}</td>
+                <td>{{$user->U_username}}</td>
+                <td>{{$user->U_email}}</td>
+                <td>{{$user->Usertype}}</td>
+                <td>{{$user->U_profileimg}}</td>
+                <td><a href="/admin/edit/{{$user->id}}/{{$user->name}}">Edit</a></td>
+                <td><a href="/admin/delete/{{$user->id}}/{{$user->name}}">Delete</a></td>
             </tr>
         @endforeach
     </table>

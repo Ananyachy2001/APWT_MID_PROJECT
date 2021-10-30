@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DetailController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -22,8 +24,31 @@ use App\Http\Controllers\LoginController;
 //Basic Routes
 Route::get('/', [PagesController::class,'home'])->name('home');
 
-Route::get('/contact/public',[PagesController::class,'contact'])->name('contact');
-Route::get('/profile',[PagesController::class,'myprofile'])->name('profile');
+
+//product routes
+Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
+Route::post('/product/create',[ProductController::class,'createSubmit'])->name('product.create');
+Route::get('/product/list',[ProductController::class,'list'])->name('product.list');
+Route::get('/product/edit/{id}/{name}',[ProductController::class,'edit']);
+Route::post('/product/edit',[ProductController::class,'editSubmit'])->name('product.edit');
+Route::get('/product/delete/{id}/{name}',[ProductController::class,'delete']);
+
+//order routes
+Route::get('/order/create',[OrderController::class,'create'])->name('order.create');
+Route::post('/order/create',[OrderController::class,'createSubmit'])->name('order.create');
+Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
+Route::get('/order/edit/{id}/{name}',[OrderController::class,'edit']);
+Route::post('/order/edit',[OrderController::class,'editSubmit'])->name('order.edit');
+Route::get('/order/delete/{id}/{name}',[OrderController::class,'delete']);
+
+//delivery routes
+Route::get('/delivery/create',[DeliveryController::class,'create'])->name('delivery.create');
+Route::post('/delivery/create',[DeliveryController::class,'createSubmit'])->name('delivery.create');
+Route::get('/delivery/list',[DeliveryController::class,'list'])->name('delivery.list');
+Route::get('/delivery/edit/{id}/{name}',[DeliveryController::class,'edit']);
+Route::post('/deliverycon/edit',[DeliveryController::class,'editSubmit'])->name('delivery.edit');
+Route::get('/deliverycon/delete/{id}/{name}',[DeliveryController::class,'delete']);
+
 
 //admin routes
 Route::get('/admin/create',[AdminController::class,'create'])->name('admin.create');
@@ -40,8 +65,7 @@ Route::get('/user/list',[UserController::class,'list'])->name('user.list');
 //user details
 Route::get('/user/details',[AdminController::class,'userDetails'])->name('user.details');
 
-//details
-Route::get('/details',[DetailController::class,'detailuser'])->name('user.details');
+
 
 
 Route::get('/registration', [Admincontroller::class, 'registrationPage'])->name('registration');

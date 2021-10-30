@@ -5,3 +5,8 @@
 <a class="btn btn-primary" href="{{route('user.list')}}"> User List </a>
 <a class="btn btn-primary" href="{{route('admin.create')}}"> Create Admin </a>
 <a class="btn btn-primary" href="{{route('admin.list')}}"> Admin List </a>
+<a class="btn btn-primary" href="{{route('delivery.list')}}"> Delivery List </a>
+<a class="btn btn-primary" href="{{route('product.create')}}"> Add Product </a>
+<a class="btn btn-primary" href="{{route('product.list')}}"> Product List </a>
+<a class="btn btn-primary" href="{{route('order.create')}}"> Order Now </a>
+<a class="btn btn-primary" href="{{route('order.list')}}"> See Order </a>
