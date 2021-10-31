@@ -3,32 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Deliverinfo;
 
 class DeliveryController extends Controller
 {
     
     public function Create(){
-        return view('pages.deliverycons.create');
+        return view('pages.deliveryconfirmations.create');
     }
     public function createSubmit(Request $request){
 
         $this->validate(
             $request,
             [
-                'Dman_id'=>'required',
-                'Order_id'=>'required',
+                'Ord_id'=>'required',
+                'Pay_price'=>'required',
+                'D_username'=>'required',
                 'D_Status'=>'required',
                 'D_time'=>'required',
             ],
             [
-                'Dman_id.required'=>'Please put Delivery man ID!',
-                'Order_id.required'=>'Please put Order ID!',
+                'Ord_id.required'=>'Please put Order ID!',
+                'Pay_price.required'=>'Pay_price put Order ID!',
                 'D_Status.required'=>'Please put Delivery Status!',
                 'D_time.required'=>'Please put Delivery Time!',
             ]
         );
 
-        $var = new Delivery();
+        $var = new Deliverinfo();
         $var->Dman_id= $request->Dman_id;
         $var->Order_id = $request->Order_id;
         $var->D_Status = $request->D_Status;
@@ -40,31 +42,31 @@ class DeliveryController extends Controller
     }
     public function list(){
 
-        $deliverycons = Delivery::all();
-        return view('pages.deliverycons.list')->with('deliverycons',$deliverycons);
+        $deliverys = Deliverinfo::all();
+        return view('pages.deliveryconfirmations.list')->with('deliverys',$deliverys);
     }
     public function edit(Request $request){
         //
         $id = $request->id;
-        $deliverycon = Delivery::where('id',$id)->first();
-        return view('pages.deliverycons.edit')->with('deliverycon', $deliverycon);
+        $delivery = Deliverinfo::where('id',$id)->first();
+        return view('pages.deliveryconfirmations.edit')->with('delivery', $delivery);
 
     }
 
     public function editSubmit(Request $request){
-        $var = Delivery::where('id',$request->id)->first();
-        $var->name= $request->name;
-        $var->dob = $request->dob;
-        $var->email = $request->email;
-        $var->phone=$request->phone;
+        $var = Deliverinfo::where('id',$request->id)->first();
+        $var->Dman_id= $request->Dman_id;
+        $var->Order_id = $request->Order_id;
+        $var->D_Status = $request->D_Status;
+        $var->D_time=$request->D_time;
         $var->save();
-        return redirect()->route('deliverycon.list');
+        return redirect()->route('delivery.list');
 
     }
     public function delete(Request $request){
-        $var = Delivery::where('id',$request->id)->first();
+        $var = Deliverinfo::where('id',$request->id)->first();
         $var->delete();
-        return redirect()->route('deliverycon.list');
+        return redirect()->route('delivery.list');
 
     }
 }

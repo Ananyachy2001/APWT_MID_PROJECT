@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Myorder;
+use App\Models\Systemuser;
 
 class OrderController extends Controller
 {
     public function Create(){
-        return view('pages.orders.create');
+        $systemusers = Systemuser::all();
+
+        return view('pages.orders.create')->with('systemusers',$systemusers);
     }
     public function createSubmit(Request $request){
 
@@ -18,7 +22,7 @@ class OrderController extends Controller
                 'user_id'=>'required',
                 'U_username'=>'required',
                 'P_tprice'=>'required',
-                'Paymenttype'=>'required',
+                'Paymanttype'=>'required',
                 'O_status'=>'required',
             ],
             [
@@ -26,48 +30,54 @@ class OrderController extends Controller
                 'user_id.required'=>'Please put User ID!',
                 'U_username.required'=>'Please put Username!',
                 'P_tprice.required'=>'Please put Price!',
-                'Paymenttype.required'=>'Please put Payment!',
+                'Paymanttype.required'=>'Please put Payment!',
                 'O_status.required'=>'Please put Order!',
             ]
         );
 
-        $var = new Delivery();
+        $var = new Myorder();
         $var->O_id= $request->O_id;
         $var->user_id = $request->user_id;
         $var->U_username = $request->U_username;
         $var->P_tprice=$request->P_tprice;
-        $var->Paymenttype = $request->Paymenttype;
+        $var->Paymanttype = $request->Paymanttype;
         $var->O_status=$request->O_status;
         $var->save();
 
 
-        return "Order Done";      
+        return redirect()->route('order.list');      
     }
     public function list(){
 
-        $orders = Order::all();
-        return view('pages.orders.list')->with('orders',$orders);
+        $orders = Myorder::all();
+        $systemusers = Systemuser::all();
+
+        return view('pages.orders.list')->with('orders',$orders,'systemusers',$systemusers);
     }
     public function edit(Request $request){
         //
         $id = $request->id;
-        $order = Order::where('id',$id)->first();
-        return view('pages.orders.edit')->with('order', $order);
+        $orders = Myorder::where('id',$id)->first();
+        $systemusers = Systemuser::all();
+        return view('pages.orders.edit')->with('orders', $orders,'systemusers',$systemusers);
 
     }
 
     public function editSubmit(Request $request){
-        $var = Order::where('id',$request->id)->first();
-        $var->name= $request->name;
-        $var->dob = $request->dob;
-        $var->email = $request->email;
-        $var->phone=$request->phone;
+        $var = Myorder::where('id',$request->id)->first();
+        $var->O_id= $request->O_id;
+        $var->user_id = $request->user_id;
+        $var->U_username = $request->U_username;
+        $var->P_tprice=$request->P_tprice;
+        $var->Paymanttype = $request->Paymanttype;
+        $var->O_status=$request->O_status;
         $var->save();
+        
         return redirect()->route('order.list');
 
     }
     public function delete(Request $request){
-        $var = Order::where('id',$request->id)->first();
+        $var = Myorder::where('id',$request->id)->first();
         $var->delete();
         return redirect()->route('order.list');
 

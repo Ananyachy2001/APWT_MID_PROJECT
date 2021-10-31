@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
     <form action="{{route('order.create')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
@@ -10,14 +11,22 @@
             @error('O_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-        </div>
+        </div> 
+        <div>
             <span>User ID</span>
-            <input type="text" name="user_id" value="{{old('user_id')}}" class="form-control">
+
+           <select name="user_id">
+            <option value="0" disable="true" selected="true">Select</option>
+            @foreach($systemusers as $systemuser)
+            <option value="{{$systemuser->id}}">{{$systemuser->id}}</option>
+            @endforeach
+            </select>
             @error('user_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        </div>
+
+        <div>
             <span>Username</span>
             <input type="text" name="U_username" value="{{old('U_username')}}" class="form-control">
             @error('U_username')
@@ -33,8 +42,8 @@
         </div>
         <div>
             <span>Payment Type</span>
-            <input type="text" name="Paymenttype" value="{{old('Paymenttype')}}" class="form-control">
-            @error('Paymenttype')
+            <input type="text" name="Paymanttype" value="{{old('Paymanttype')}}" class="form-control">
+            @error('Paymanttype')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
@@ -47,4 +56,6 @@
         </div>
         <input type="submit" class="btn btn-success" value="Order Now" >
     </form>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection

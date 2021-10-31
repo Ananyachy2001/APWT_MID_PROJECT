@@ -6,49 +6,49 @@
         
         <div class="col-md-4 form-group">
             <span>Name</span>
-            <input type="text" name="name" value="{{old('name')}}" class="form-control">
-            @error('name')
+            <input type="text" name="u_name" value="{{old('u_name')}}" class="form-control">
+            @error('u_name')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
             <span>Phone</span>
-            <input type="text" name="phone" value="{{old('phone')}}" class="form-control">
-            @error('phone')
+            <input type="text" name="u_phone" value="{{old('u_phone')}}" class="form-control">
+            @error('u_phone')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         </div>
             <span>Address</span>
-            <input type="text" name="address" value="{{old('address')}}" class="form-control">
-            @error('address')
+            <input type="text" name="u_address" value="{{old('u_address')}}" class="form-control">
+            @error('u_address')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         </div>
             <span>Username</span>
-            <input type="text" name="username" value="{{old('username')}}" class="form-control">
-            @error('username')
+            <input type="text" name="u_username" value="{{old('u_username')}}" class="form-control">
+            @error('u_username')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         </div>
             <span>Email</span>
-            <input type="text" name="email" value="{{old('email')}}" class="form-control">
-            @error('email')
+            <input type="text" name="u_email" value="{{old('u_email')}}" class="form-control">
+            @error('u_email')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         </div>
             <span>Password</span>
-            <input type="password" name="password" value="{{old('password')}}" class="form-control">
-            @error('password')
+            <input type="password" name="u_password" value="{{old('u_password')}}" class="form-control">
+            @error('u_password')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         <div>
       
             <span>Usertype</span>
-            <input type="hidden" name="usertype" value="admin" class="form-control">
+            <input type="text" name="usertype" value="admin" class="form-control">
             @error('usertype')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -56,8 +56,8 @@
         <div>
       
       <span>Profile Picture</span>
-      <input type="hidden" name="profileimg" value="default.jpg" class="form-control">
-      @error('profileimg')
+      <input type="text" name="u_profileimg" value="default.jpg" class="form-control">
+      @error('u_profileimg')
           <span class="text-danger">{{$message}}</span>
       @enderror
   </div>

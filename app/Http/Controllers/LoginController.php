@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Systemuser;
 class LoginController extends Controller
 {
     public function Login(){
@@ -14,23 +14,55 @@ class LoginController extends Controller
         $validate=$request->validate([
 
 
-            'username'=>'required|min:5',
-            'password'=>'required|min:6',
+            'u_username'=>'required|min:5',
+            'u_password'=>'required|min:6',
        ],
        [
-           'username.required'=>'Username required!',
-           'username.min'=>'Name must be atleast 5 charcaters!',
-           'password.required'=>'Password required!',
-           'password.min'=>'Password must be atleast 6 charcaters!!',
+           'u_username.required'=>'Username required!',
+           'u_username.min'=>'Name must be atleast 5 charcaters!',
+           'u_password.required'=>'Password required!',
+           'u_password.min'=>'Password must be atleast 6 charcaters!!',
            
        ]
        
        );
-       return redirect()->route('home');
+
+       $Systemuser = Systemuser::where('U_username',$request->u_username)
+       ->where('U_password',$request->u_password)
+       ->first();
+
+        if($Systemuser){
+        $request->session()->put('user_id',$Systemuser->id);
+        $request->session()->put('user_name',$Systemuser->U_username);
+        return redirect()->route('userdash');
+       
 
     }
-    public function logout(){
-        session()->forget('user');
-        return redirect()->route('login');
-    }
+    return back();
+
+
+}
+
+        public function logout(){   
+                session()->forget('user_id');
+                return redirect()->route('login');
+            }
+
+
+
+            public function userdash(){
+
+                $Systemuser=Systemuser::where('id',Session()->get('user_id'))->first();
+       
+                return view('pages.users.userdash')->with('Systemuser',$Systemuser);
+           }
+       
+           public function staffProfile(){
+       
+               $Systemuser=Systemuser::where('id',Session()->get('staff_id'))->first();
+       
+               return view('Profile')->with('Systemuser',$Systemuser);
+          }
+
+
 }

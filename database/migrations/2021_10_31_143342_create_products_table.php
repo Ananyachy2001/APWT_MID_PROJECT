@@ -22,7 +22,9 @@ class CreateProductsTable extends Migration
 
             $table->string('P_price',20);
 
-            $table->string('P_categories',30)->unique();
+            $table->unsignedBigInteger('Cat_id');
+
+            $table->foreign('Cat_id')->references('id')->on('categories');
 
             $table->string('P_quantity',50)->unique();
 

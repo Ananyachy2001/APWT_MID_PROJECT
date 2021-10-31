@@ -16,7 +16,7 @@ class ValidUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->get('user')){
+        if($request->session()->get('user_id')){
             return $next($request);
         }
         return redirect()->route('login');

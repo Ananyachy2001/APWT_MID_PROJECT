@@ -1,26 +1,25 @@
-@extends('layouts.staffapp')
+@extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
 
-
-    <?php if(Session::has('staff_id')) {?>
     <h1>Category page</h1>
-    <h3><a  class="btn btn-info" href="/Staff/addcategories/">Add Category</a></h3>
-    <table class="table" border='1'>
+    <table class="table" border='2'>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th></th>
+                <th></th>
             </tr>    
         </thead>
-        @foreach($Category as $item)
+        @foreach($categories as $item)
         <tr>
             <td>{{$item->id}}</td>
-            <td>{{$item->name}}</td>
-            <td>{{$item->desc}}</td>
-            <td>
-            <td><a href="/Category/edit/{{$item->id}}/">Edit</a>
-            <a href="/Category/delete/{{$item->id}}/">Delete</a>
+            <td>{{$item->C_name}}</td>
+            <td>{{$item->C_desc}}</td>
+            <td><a href="/category/edit/{{$item->id}}/{{$item->C_name}}">Edit</a></td>
+            <td><a href="/category/delete/{{$item->id}}/{{$item->C_name}}">Delete</a></td>
     </td>
     </tr>
         
@@ -28,3 +27,7 @@
         <tbody>
     </tbody>
     </table>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
+
+@endsection

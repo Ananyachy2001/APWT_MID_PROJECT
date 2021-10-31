@@ -1,8 +1,6 @@
-@if(Session::get('user')) {{Session::get('user')}} 
-        <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
-
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
 <form action="{{route('product.edit')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
@@ -29,9 +27,9 @@
             @enderror
         </div>
         <div class="col-md-4 form-group">
-            <span>Product Category</span>
-            <input type="text" name="p_categories" value="{{$product->P_categories}}" class="form-control">
-            @error('p_categories')
+            <span>Category ID</span>
+            <input type="text" name="cat_id" value="{{$product->Cat_id}}" class="form-control">
+            @error('cat_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
@@ -72,6 +70,7 @@
         </div>
         <input type="submit" class="btn btn-success" value="Edit" >
     </form>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection
 
-@endif
