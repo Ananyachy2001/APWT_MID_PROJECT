@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@if(Session::get('user_id')) 
-<form action="{{route('user.edit')}}" class="col-md-6" method="post">
+@if(Session::has('user_id')) 
+<form action="{{route('userprofile')}}" class="col-md-6" method="post">
 <h1>Edit Your Imformation</h1>
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
@@ -66,8 +66,8 @@
         </div>
         <input type="submit" class="btn btn-success" value="Edit" >
     </form>
-    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
-@endif
 @endsection
 
 
+        <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif

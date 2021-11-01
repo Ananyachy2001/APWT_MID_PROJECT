@@ -47,8 +47,8 @@
         </div>
         <div>
       
-            <span>Usertype</span>
-            <input type="text" name="usertype" value="admin" class="form-control">
+            
+            <input type="hidden" name="usertype" value="admin" class="form-control">
             @error('usertype')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -63,4 +63,6 @@
   </div>
         <input type="submit" class="btn btn-success" value="Sign Up" >
     </form>
+
+    
 @endsection

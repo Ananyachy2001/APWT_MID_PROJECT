@@ -13,4 +13,9 @@ class PagesController extends Controller
         return view('pages.users.userdash');
 
     }
+
+    public function userprofile(){
+        return view('pages.users.userprofile');
+
+    }
 }

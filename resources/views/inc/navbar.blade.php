@@ -1,8 +1,9 @@
 <a class="btn btn-danger" href="{{route('home')}}"> Home </a>
 <a class="btn btn-success" href="{{route('login')}}"> Login </a>
 
-<a class="btn btn-primary" href="{{route('user.create')}}"> Create Users </a>
+<a class="btn btn-primary" href="{{route('user.create')}}"> Create Admin </a>
 <a class="btn btn-primary" href="{{route('user.list')}}"> User List </a>
+<a class="btn btn-primary" href="{{route('admin.create')}}"> Create Users </a>
 <a class="btn btn-primary" href="{{route('orderdetail.create')}}"> Create Order Details</a>
 <a class="btn btn-primary" href="{{route('orderdetail.list')}}"> Order Details list </a>
 <a class="btn btn-primary" href="{{route('delivery.list')}}"> Delivery List </a>

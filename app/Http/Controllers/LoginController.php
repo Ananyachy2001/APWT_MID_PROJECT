@@ -57,11 +57,11 @@ class LoginController extends Controller
                 return view('pages.users.userdash')->with('Systemuser',$Systemuser);
            }
        
-           public function staffProfile(){
+           public function userprofile(){
        
-               $Systemuser=Systemuser::where('id',Session()->get('staff_id'))->first();
+               $Systemuser=Systemuser::where('id',Session()->get('user_id'))->first();
        
-               return view('Profile')->with('Systemuser',$Systemuser);
+               return view('pages.users.userprofile')->with('Systemuser',$Systemuser);
           }
 
 

@@ -99,3 +99,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Admin dash
 Route::get('/user/dash', [PagesController::class,'userdash'])->name('userdash')->middleware('ValidUser');
+
+
+//Admin profile
+Route::get('/user/userprofile', [PagesController::class,'userprofile'])->name('userprofile');
