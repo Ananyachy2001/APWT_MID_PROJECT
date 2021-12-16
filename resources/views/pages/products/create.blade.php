@@ -25,20 +25,28 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div>
-            <span>Category ID</span>
 
-           <select name="cat_id">
-            <option value="0" disable="true" selected="true">Select</option>
-            @foreach($categories as $cat)
-            <option value="{{$cat->id}}">{{$cat->C_name}}</option>
-            @endforeach
+    <div>
+            <span>Product Categories:</span>
+        <select name="p_categories" id="">
+            <option value="" disable="true" selected="true">Select</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Desktops">Desktops</option>
+            <option value="Watches">Watches</option>
+            <option value="Smart phone">Smart phone</option>
+            <option value="Motor Bikes">Motor Bikes</option>
+            <option value="Smart & Android tvs">Smart & Android tvs</option>
+            <option value="Speakers">Speakers</option>
+            <option value="Headphones">Headphones</option>
+            <option value="Refrigerators">Refrigerators</option>
+            <option value="Split Ac">Split Ac</option>
+            <option value="Men Fashion">Men Fashion</option>
+            <option value="Women Fashion">Women Fashion</option>
         </select>
-           
-            @error('cat_id')
+            @error('p_categories')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-        </div>
+</div>
         <div>
             <span>Product Quantity</span>
             <input type="number" name="p_quantity" value="{{old('p_quantity')}}" class="form-control">

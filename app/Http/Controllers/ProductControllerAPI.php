@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductControllerAPI extends Controller
 {
     public function Create(){
         $products = Product::all();
@@ -83,5 +82,24 @@ class ProductController extends Controller
         $var->delete();
         return redirect()->route('product.list');
 
+    }
+
+    public function productAPIList(){
+        return Product::all();
+    }
+    public function productAPIPost(Request $request){
+        $var = new Product();
+        $var->P_id= $request->p_id;
+        $var->P_name = $request->p_name;
+        $var->P_price = $request->p_price;
+        $var->P_categories=$request->p_categories;
+        $var->P_quantity = $request->p_quantity;
+        $var->P_details = $request->p_details;
+        $var->P_img1=$request->p_img1;
+        $var->P_img2=$request->p_img2;
+        $var->P_img3=$request->p_img3;
+        $var->save();
+
+        return $request;
     }
 }

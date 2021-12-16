@@ -49,7 +49,7 @@
         <div>
             <span>User Type:</span>
         <select name="usertype" id="">
-            <option value="0" disable="true" selected="true">Select</option>
+            <option value="" disable="true" selected="true">Select</option>
             <option value="Admin">Admin</option>
             <option value="Staff">Staff</option>
             <option value="Delivery man">Delivery man</option>

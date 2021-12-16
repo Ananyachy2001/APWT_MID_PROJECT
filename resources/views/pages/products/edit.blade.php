@@ -27,9 +27,9 @@
             @enderror
         </div>
         <div class="col-md-4 form-group">
-            <span>Category ID</span>
-            <input type="text" name="cat_id" value="{{$product->Cat_id}}" class="form-control">
-            @error('cat_id')
+            <span>Product Categories</span>
+            <input type="text" name="p_categories" value="{{$product->P_categories}}" class="form-control">
+            @error('p_categories')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
