@@ -8,6 +8,7 @@ use App\Http\Controllers\DeliveryControllerAPI;
 use App\Http\Controllers\OrderControllerAPI;
 use App\Http\Controllers\ProductControllerAPI;
 use App\Http\Controllers\OrderdetailControllerAPI;
+use App\Http\Controllers\LoginControllerAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 //API test
-Route::get('/admin/list',[AdminControllerAPI::class,'adminAPIList']);
+Route::get('/admin/list',[AdminControllerAPI::class,'adminAPIList'])->middleware('APIAuth');
 Route::post('/admin/create',[AdminControllerAPI::class,'adminAPIPost']);
 
 
@@ -35,18 +36,21 @@ Route::get('/user/list',[UserControllerAPI::class,'userAPIList']);
 Route::post('/user/create',[UserControllerAPI::class,'userAPIPost']);
 
 //API test
-Route::get('/product/list',[ProductControllerAPI::class,'productAPIList']);
+Route::get('/product/list',[ProductControllerAPI::class,'productAPIList'])->middleware('APIAuth');
 Route::post('/product/create',[ProductControllerAPI::class,'productAPIPost']);
 
 //API test
-Route::get('/order/list',[OrderControllerAPI::class,'orderAPIList']);
+Route::get('/order/list',[OrderControllerAPI::class,'orderAPIList'])->middleware('APIAuth');
 Route::post('/order/create',[OrderControllerAPI::class,'orderAPIPost']);
 
 //API test
-Route::get('/orderdetail/list',[OrderdetailControllerAPI::class,'orderdetailAPIList']);
+Route::get('/orderdetail/list',[OrderdetailControllerAPI::class,'orderdetailAPIList'])->middleware('APIAuth');
 Route::post('/orderdetail/create',[OrderdetailControllerAPI::class,'orderdetailAPIPost']);
 
 
 //API test
-Route::get('/delivery/list',[DeliveryControllerAPI::class,'deliveryAPIList']);
+Route::get('/delivery/list',[DeliveryControllerAPI::class,'deliveryAPIList'])->middleware('APIAuth');
 Route::post('/delivery/create',[DeliveryControllerAPI::class,'deliveryAPIPost']);
+
+
+Route::post('/login',[LoginControllerAPI::class,'login']);
