@@ -32,7 +32,7 @@ Route::post('/admin/create',[AdminControllerAPI::class,'adminAPIPost']);
 
 
 //API test
-Route::get('/user/list',[UserControllerAPI::class,'userAPIList']);
+Route::get('/user/list',[UserControllerAPI::class,'userAPIList'])->middleware('APIAuth');
 Route::post('/user/create',[UserControllerAPI::class,'userAPIPost']);
 
 //API test

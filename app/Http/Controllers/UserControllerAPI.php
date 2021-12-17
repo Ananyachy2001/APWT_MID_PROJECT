@@ -104,14 +104,14 @@ class UserControllerAPI extends Controller
     }
     public function userAPIPost(Request $request){
         $var = new Systemuser();
-        $var->U_Name= $request->u_name;
-        $var->U_phone= $request->u_phone;
-        $var->U_address= $request->u_address;
-        $var->U_username= $request->u_username;
-        $var->U_email= $request->u_email;
-        $var->U_password= $request->u_password;
-        $var->Usertype= $request->usertype;
-        $var->U_profileimg= $request->u_profileimg;
+        $var->U_Name= $request->Name;
+        $var->U_phone= $request->Phone;
+        $var->U_address= $request->Address;
+        $var->U_username= $request->Username;
+        $var->U_email= $request->Email;
+        $var->U_password= $request->Password;
+        $var->Usertype= $request->Usertype;
+        $var->U_profileimg= $request->Profileimg;
         $var->save();
 
         return $request;

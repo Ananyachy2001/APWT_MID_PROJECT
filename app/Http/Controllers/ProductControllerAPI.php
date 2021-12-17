@@ -89,15 +89,15 @@ class ProductControllerAPI extends Controller
     }
     public function productAPIPost(Request $request){
         $var = new Product();
-        $var->P_id= $request->p_id;
-        $var->P_name = $request->p_name;
-        $var->P_price = $request->p_price;
-        $var->P_categories=$request->p_categories;
-        $var->P_quantity = $request->p_quantity;
-        $var->P_details = $request->p_details;
-        $var->P_img1=$request->p_img1;
-        $var->P_img2=$request->p_img2;
-        $var->P_img3=$request->p_img3;
+        $var->P_id= $request->P_id;
+        $var->P_name = $request->P_name;
+        $var->P_price = $request->P_price;
+        $var->P_categories=$request->P_categories;
+        $var->P_quantity = $request->P_quantity;
+        $var->P_details = $request->P_details;
+        $var->P_img1=$request->P_img1;
+        $var->P_img2=$request->P_img2;
+        $var->P_img3=$request->P_img3;
         $var->save();
 
         return $request;
